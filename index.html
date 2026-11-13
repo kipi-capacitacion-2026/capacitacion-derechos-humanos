@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro y Evaluación - Capacitación KIPI / Talent Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+    <!-- Header Institucional -->
+    <header class="bg-slate-900 text-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold">KIPI / Talent Group</h1>
+                <p class="text-xs text-slate-400">Sistema de Gestión y Divulgación - Derechos Humanos</p>
+            </div>
+            <button onclick="toggleAdminModal()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg border border-slate-700 transition">
+                🔒 Panel Administrador
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Formulario de Registro y Evaluación -->
+        <div id="app-container" class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden p-6 sm:p-8">
+            <div class="mb-6 border-b pb-4">
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-2">Evaluación Obligatoria</span>
+                <h2 class="text-2xl font-bold text-slate-900">Divulgación Política y Canales de Comunicación</h2>
+                <p class="text-sm text-slate-500 mt-1">Por favor complete sus datos y responda el cuestionario basándose en la política institucional.</p>
+            </div>
+
+            <form id="trainingForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                <!-- Sección 1: Datos Personales -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="col-span-full font-semibold text-slate-700 text-sm uppercase tracking-wider">1. Datos de Registro</h3>
+                    
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Fecha de Capacitación</label>
+                        <input type="text" id="fecha" value="28 de octubre 2026" disabled class="w-full bg-slate-200 text-slate-700 text-sm rounded-lg px-3 py-2 border border-slate-300 cursor-not-allowed">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Nombres Completos *</label>
+                        <input type="text" id="nombre" required placeholder="Ej. Ana María Pérez" class="w-full bg-white text-sm rounded-lg px-3 py-2 border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Cargo *</label>
+                        <input type="text" id="cargo" required placeholder="Ej. Analista de Operaciones" class="w-full bg-white text-sm rounded-lg px-3 py-2 border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Celular *</label>
+                        <input type="tel" id="celular" required placeholder="Ej. 3147249893" class="w-full bg-white text-sm rounded-lg px-3 py-2 border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Correo Electrónico *</label>
+                        <input type="email" id="correo" required placeholder="correo@empresa.com" class="w-full bg-white text-sm rounded-lg px-3 py-2 border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Tipo de Personal *</label>
+                        <select id="tipoPersonal" required class="w-full bg-white text-sm rounded-lg px-3 py-2 border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="">Seleccione...</option>
+                            <option value="Personal Propio">Personal Propio</option>
+                            <option value="Contratista">Contratista</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sección 2: Cuestionario -->
+                <div class="space-y-6 pt-4">
+                    <h3 class="font-semibold text-slate-700 text-sm uppercase tracking-wider border-b pb-2">2. Cuestionario de Evaluación</h3>
+
+                    <!-- Pregunta 1 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-900">1. ¿A quiénes aplica la Política de Derechos Humanos KIPI?[cite: 1]</label>
+                        <div class="space-y-2 pl-2">
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p1" value="a" required class="text-blue-600"> <span>Unicamente Personal Administrativo</span>[cite: 1]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p1" value="b" class="text-blue-600"> <span>Empleados y Contratistas</span>[cite: 1]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p1" value="c" class="text-blue-600"> <span>Unicamente Contratistas</span>[cite: 1]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p1" value="d" class="text-blue-600"> <span>Solo a Directivos de la compañía</span>[cite: 1]</label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-900">2. ¿Cuál es el compromiso principal de TALENT GROUP S.A.S. frente a los Derechos Humanos?[cite: 1]</label>
+                        <div class="space-y-2 pl-2">
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p2" value="a" required class="text-blue-600"> <span>Respetar, promover y proteger los Derechos Humanos y prevenir impactos negativos</span>[cite: 1]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p2" value="b" class="text-blue-600"> <span>Atender únicamente los casos que afecten la productividad</span>[cite: 1]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p2" value="c" class="text-blue-600"> <span>Delegar toda responsabilidad en los contratistas</span>[cite: 1]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p2" value="d" class="text-blue-600"> <span>Intervenir solo cuando exista una denuncia externa</span>[cite: 1]</label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-900">3. ¿Cuál de las siguientes conductas está expresamente prohibida por la política?[cite: 2]</label>
+                        <div class="space-y-2 pl-2">
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p3" value="a" required class="text-blue-600"> <span>Solicitar orientación a Gestión Humana</span>[cite: 2]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p3" value="b" class="text-blue-600"> <span>Reportar de buena fe una posible vulneración</span>[cite: 2]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p3" value="c" class="text-blue-600"> <span>Tomar represalias contra quien reporte de buena fe</span>[cite: 2]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p3" value="d" class="text-blue-600"> <span>Cooperar con acciones de prevención</span>[cite: 2]</label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-900">4. La información recibida a través de los canales de reporte debe manejarse con reserva y acceso limitado a las personas que necesiten intervenir.[cite: 2]</label>
+                        <div class="space-y-2 pl-2">
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p4" value="Verdadero" required class="text-blue-600"> <span>Verdadero</span>[cite: 2]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p4" value="Falso" class="text-blue-600"> <span>Falso</span>[cite: 2]</label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-slate-900">5. Los detalles de cada reporte deben divulgarse a todos los empleados y contratistas para garantizar transparencia.[cite: 2]</label>
+                        <div class="space-y-2 pl-2">
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p5" value="Verdadero" required class="text-blue-600"> <span>Verdadero</span>[cite: 2]</label>
+                            <label class="flex items-center space-x-3 text-sm"><input type="radio" name="p5" value="Falso" class="text-blue-600"> <span>Falso</span>[cite: 2]</label>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 6 (Sin calificar - Encuesta de Canal) -->
+                    <div class="space-y-2 bg-blue-50 p-4 rounded-xl border border-blue-100">
+                        <label class="block text-sm font-medium text-blue-900">6. ¿Desde la empresa te compartieron los canales de comunicación y Política de derechos Humanos?</label>
+                        <div class="space-x-6 pl-2 pt-1">
+                            <label class="inline-flex items-center space-x-2 text-sm"><input type="radio" name="p6" value="Sí" required class="text-blue-600"> <span>Sí</span></label>
+                            <label class="inline-flex items-center space-x-2 text-sm"><input type="radio" name="p6" value="No" class="text-blue-600"> <span>No</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition duration-200">
+                        Finalizar y Enviar Evaluación
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Pantalla de Éxito Individual -->
+        <div id="success-container" class="hidden bg-white rounded-2xl shadow-xl border border-slate-100 p-8 text-center space-y-4">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
+            <h2 class="text-2xl font-bold text-slate-900">¡Evaluación Registrada con Éxito!</h2>
+            <p id="success-message" class="text-slate-600 text-sm max-w-md mx-auto"></p>
+            <button onclick="resetForm()" class="bg-slate-900 text-white px-6 py-2 rounded-xl text-sm hover:bg-slate-800 transition">Registrar otra persona</button>
+        </div>
+    </main>
+
+    <!-- Modal de Administrador -->
+    <div id="adminModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+            <div class="p-6 bg-slate-900 text-white flex justify-between items-center">
+                <h3 class="font-bold text-lg">Panel de Control y Auditoría</h3>
+                <button onclick="toggleAdminModal()" class="text-slate-400 hover:text-white text-xl">✕</button>
+            </div>
+            
+            <div id="adminLoginView" class="p-8 text-center space-y-4 max-w-sm mx-auto my-auto">
+                <p class="text-sm text-slate-600">Ingrese el PIN de Administrador para ver los registros y auditoría:</p>
+                <input type="password" id="adminPin" placeholder="PIN de acceso" class="w-full text-center tracking-widest text-lg bg-slate-100 rounded-lg p-2 border border-slate-300">
+                <button onclick="verifyAdmin()" class="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700">Ingresar</button>
+            </div>
+
+            <div id="adminDataView" class="hidden flex-1 flex flex-col overflow-hidden p-6 space-y-4">
+                <div class="flex justify-between items-center">
+                    <p class="text-xs text-slate-500" id="recordCount">Total registros: 0</p>
+                    <div class="space-x-2">
+                        <button onclick="exportToCSV()" class="bg-green-600 text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-green-700 shadow">📥 Descargar Reporte Excel (CSV)</button>
+                        <button onclick="clearData()" class="bg-red-100 text-red-700 text-xs px-3 py-2 rounded-lg font-medium hover:bg-red-200">Limpiar Base</button>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-x-auto border border-slate-200 rounded-xl">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead class="bg-slate-100 text-slate-700 uppercase tracking-wider">
+                            <tr>
+                                <th class="p-3 border-b">Fecha</th>
+                                <th class="p-3 border-b">Nombres</th>
+                                <th class="p-3 border-b">Cargo</th>
+                                <th class="p-3 border-b">Celular</th>
+                                <th class="p-3 border-b">Correo</th>
+                                <th class="p-3 border-b">Tipo</th>
+                                <th class="p-3 border-b">Calificación</th>
+                                <th class="p-3 border-b">¿Recibió Canales?</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTableBody" class="divide-y divide-slate-100 text-slate-600"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_PIN = "KIPI2026*"; // Clave de administrador exclusiva
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Evaluar respuestas
+            const p1 = document.querySelector('input[name="p1"]:checked').value;
+            const p2 = document.querySelector('input[name="p2"]:checked').value;
+            const p3 = document.querySelector('input[name="p3"]:checked').value;
+            const p4 = document.querySelector('input[name="p4"]:checked').value;
+            const p5 = document.querySelector('input[name="p5"]:checked').value;
+            const p6 = document.querySelector('input[name="p6"]:checked').value;
+
+            let score = 0;
+            if (p1 === 'b') score += 20;
+            if (p2 === 'a') score += 20;
+            if (p3 === 'c') score += 20;
+            if (p4 === 'Verdadero') score += 20;
+            if (p5 === 'Falso') score += 20;
+
+            const record = {
+                fecha: document.getElementById('fecha').value,
+                nombre: document.getElementById('nombre').value,
+                cargo: document.getElementById('cargo').value,
+                celular: document.getElementById('celular').value,
+                correo: document.getElementById('correo').value,
+                tipoPersonal: document.getElementById('tipoPersonal').value,
+                calificacion: score + "%",
+                recibioCanales: p6
+            };
+
+            let records = JSON.parse(localStorage.getItem('kipi_training_records') || '[]');
+            records.push(record);
+            localStorage.setItem('kipi_training_records', JSON.stringify(records));
+
+            document.getElementById('trainingForm').reset();
+            document.getElementById('app-container').classList.add('hidden');
+            document.getElementById('success-message').innerText = `Gracias ${record.nombre}. Su evaluación ha sido guardada satisfactoriamente con una calificación de ${score}%.`;
+            document.getElementById('success-container').classList.remove('hidden');
+        }
+
+        function resetForm() {
+            document.getElementById('success-container').classList.add('hidden');
+            document.getElementById('app-container').classList.remove('hidden');
+        }
+
+        function toggleAdminModal() {
+            const modal = document.getElementById('adminModal');
+            modal.classList.toggle('hidden');
+            document.getElementById('adminLoginView').classList.remove('hidden');
+            document.getElementById('adminDataView').classList.add('hidden');
+            document.getElementById('adminPin').value = '';
+        }
+
+        function verifyAdmin() {
+            const pin = document.getElementById('adminPin').value;
+            if (pin === ADMIN_PIN) {
+                document.getElementById('adminLoginView').classList.add('hidden');
+                document.getElementById('adminDataView').classList.remove('hidden');
+                loadTableData();
+            } else {
+                alert('PIN incorrecto. Acceso denegado.');
+            }
+        }
+
+        function loadTableData() {
+            let records = JSON.parse(localStorage.getItem('kipi_training_records') || '[]');
+            const tbody = document.getElementById('dataTableBody');
+            document.getElementById('recordCount').innerText = `Total registros: ${records.length}`;
+            tbody.innerHTML = '';
+
+            if (records.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-400">No hay registros almacenados todavía.</td></tr>`;
+                return;
+            }
+
+            records.forEach(r => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50">
+                        <td class="p-3">${r.fecha}</td>
+                        <td class="p-3 font-medium text-slate-800">${r.nombre}</td>
+                        <td class="p-3">${r.cargo}</td>
+                        <td class="p-3">${r.celular}</td>
+                        <td class="p-3">${r.correo}</td>
+                        <td class="p-3"><span class="bg-slate-200 px-2 py-0.5 rounded text-[10px]">${r.tipoPersonal}</span></td>
+                        <td class="p-3 font-bold text-blue-600">${r.calificacion}</td>
+                        <td class="p-3 text-center">${r.recibioCanales}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function exportToCSV() {
+            let records = JSON.parse(localStorage.getItem('kipi_training_records') || '[]');
+            if (records.length === 0) {
+                alert('No hay datos para exportar.');
+                return;
+            }
+
+            let csv = '\uFEFFFecha,Nombres,Cargo,Celular,Correo,Tipo Personal,Calificacion,Recibio Canales\n';
+            records.forEach(r => {
+                csv += `"${r.fecha}","${r.nombre}","${r.cargo}","${r.celular}","${r.correo}","${r.tipoPersonal}","${r.calificacion}","${r.recibioCanales}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'Auditoria_Capacitacion_Derechos_Humanos_KIPI.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function clearData() {
+            if (confirm('¿Está seguro de eliminar todos los registros de auditoría almacenados?')) {
+                localStorage.removeItem('kipi_training_records');
+                loadTableData();
+            }
+        }
+    </script>
+</body>
+</html>
